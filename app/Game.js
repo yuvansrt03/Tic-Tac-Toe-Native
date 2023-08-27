@@ -4,6 +4,7 @@ import Info from './Info'
 import Retry from './Retry'
 
 const Game = ({handleGameOver,handlePlayerChange,incrementPlayer2Score,incrementPlayer1Score,playerturn}) => {
+  let over=false;
   const [noOfMatches,setNoOfMatches]=useState(1)
   const [isOver,setIsOver]=useState(false)
   const [turn,setTurn]=useState('Player1')
@@ -33,6 +34,7 @@ const Game = ({handleGameOver,handlePlayerChange,incrementPlayer2Score,increment
     const updatedIsSet=Array(9).fill(false);
     setIsSet(updatedIsSet)
     setIsOver(false)
+    over=false;
     handleGameOver(false)
     setNoOfMatches(count=>count+=1);
     if(noOfMatches%2===0){
@@ -56,6 +58,7 @@ const Game = ({handleGameOver,handlePlayerChange,incrementPlayer2Score,increment
           setIsOver(val=>!val)
           incrementPlayer1Score(1)
           handleGameOver(true)
+          over=true;
         }
         else{
           setTurn('Player2')
@@ -69,6 +72,7 @@ const Game = ({handleGameOver,handlePlayerChange,incrementPlayer2Score,increment
           setIsOver(val=>!val)
           incrementPlayer2Score(1)
           handleGameOver(true)
+          over=true;
         }
         else{
           setTurn('Player1')
@@ -78,7 +82,7 @@ const Game = ({handleGameOver,handlePlayerChange,incrementPlayer2Score,increment
     }
     const allEqual = arr => arr.every(val => val === arr[0]);
     const isEqual = allEqual(updatedArray)
-    if(isEqual==true && !isOver){
+    if(isEqual==true && !over){
       handlePlayerChange('NoOne')
       setIsOver(true)
       handleGameOver(true)
