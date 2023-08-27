@@ -25,12 +25,10 @@ const styles=StyleSheet.create({
     playerWeaponX:{
         color:'red',
         fontSize:30,
-        fontFamily:'Roboto'
     },
     playerWeaponO:{
         color:'#388EFF',
         fontSize:30,
-        fontFamily:'Roboto'
     },
     playerScore:{
         color:'white',

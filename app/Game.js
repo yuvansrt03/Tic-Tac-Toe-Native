@@ -78,7 +78,7 @@ const Game = ({handleGameOver,handlePlayerChange,incrementPlayer2Score,increment
     }
     const allEqual = arr => arr.every(val => val === arr[0]);
     const isEqual = allEqual(updatedArray)
-    if(isEqual==true){
+    if(isEqual==true && !isOver){
       handlePlayerChange('NoOne')
       setIsOver(true)
       handleGameOver(true)
